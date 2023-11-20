@@ -18,6 +18,7 @@ hepb_data <- read_xpt("P_HEPBD.XPT") |> data.frame("P_HEPBD.XPT")
 hepc_data <- read_xpt("P_HEPC.XPT") |> data.frame("P_HEPC.XPT")
 fibroscan_data <- read_xpt("P_LUX.XPT") |> data.frame("P_LUX.XPT")
 insurance_data <- read_xpt("P_HIQ.XPT") |> data.frame("P_HIQ.XPT")
+alcohol_data <-  read_xpt("P_ALQ.XPT") |> data.frame("P_ALQ.XPT")
 
 head(fibroscan_data)
 
@@ -31,6 +32,22 @@ merged_df <- merge(merged_df, dmq_data, by = "SEQN")
 merged_df <- merge(merged_df, a1c_data, by = "SEQN")
 merged_df <- merge(merged_df, fibroscan_data, by = "SEQN")
 merged_df <- merge(merged_df, insurance_data, by = "SEQN")
+merged_df <- merge(merged_df, alcohol_data, by = "SEQN")
+
+#Alcohol 
+merged_df$etoh <- merged_df$ALQ151 #1->Y, 2-> No, 7-> refused, 9-> ?, .-> Missing
+
+#biomarkers
+merged_df$alt <- merged_df$LBXSATSI #Values .-> Missing
+merged_df$alb <- merged_df$LBXSAL #Values .-> Missing
+merged_df$alp <- merged_df$LBXAPSI #Values ._> Missing
+merged_df$ast <- merged_df$LBXASSI #
+merged_df$alb <- merged_df$LBXSAL
+merged_df$alb <- merged_df$LBXSAL
+merged_df$alb <- merged_df$LBXSAL
+merged_df$alb <- merged_df$LBXSAL
+merged_df$alb <- merged_df$LBXSAL
+
 
 ##to make an overview_and_introduction
 
